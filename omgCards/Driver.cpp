@@ -47,13 +47,43 @@ int main()
 	s = d.toString();
 	//cout << d;
 	cout << endl << "now i will make a linked list and print it\n";
-	//Card* c = d.deal();
+	Card* c = new Card(0, 2);
+	cout << "Card C is: " << *c << endl;
 	LinkedList l;
-	//l.insertAtIndex(c, 0);
-	for (int i = 0; i < 52; i++)
+	
+	for (int i = 0; i < 10; i++)
 		l.insertAtIndex(d.deal(), i);
+	//l.insertAtIndex(c, 10);
 	cout << l << endl;
+	
+	LinkedList l2;
+	l2 = l;
+	l2.removeAtIndex(1);
+	cout << "New list missing index 1: \n" << l2;
+
+	cout << endl << "Original again\n" << l;
+	
+	
+	
 	/*
+	cout << "Below is the new list from the copy constructor\n";
+	LinkedList l2(l);
+	cout << l2;
+	Card* c1 = l2.getTail();
+	cout << "The card at tail is" << *c1;
+	
+	
+	l.remove(c);
+	cout << l << endl;
+	
+	bool b;
+
+	b = l.contains(c);
+	if (b)
+		cout << "The card is in the deck";
+	else
+		cout << "No, the card is not in the deck";
+		
 	Card* h, *t;
 	Card* i;
 	t = l.getTail();
@@ -63,12 +93,12 @@ int main()
 	cout << "The head is: " << *h << endl
 		<< "The tail is: " << *t << endl
 		<< "The card at i is: " << *i << endl;
-	*/
+	
 	Card* c = l.removeAtIndex(2);
 	cout << "The card removed is: " << *c << endl;
 	cout << "The new list is:\n" << l;
 	cout << "The size is: " << l.getSize() << endl;
-
+	*/
 
 
 

@@ -29,6 +29,63 @@ LinkedList::LinkedList()
 	tail = NULL;
 }
 
+LinkedList::LinkedList(LinkedList& otherList)
+	:size(otherList.size)
+{
+	head = new Node(*otherList.head);
+	tail = new Node(*otherList.tail);
+	//head = new Node(new Card(*otherList.head->getData()), new Node(*otherList.head->getNext()));
+	//tail = new Node(new Card(*otherList.tail->getData()), new Node(*otherList.tail->getNext()));
+	Node* trav = head;
+	Node* travOther = otherList.head;
+	for (int i = 0; i < size - 1; i++)
+	{
+		travOther = travOther->getNext();
+		//trav->setNext(new Node(new Card(*travOther->getData()), new Node(*travOther->getNext())));
+		trav->setNext(new Node(*travOther));
+		trav = trav->getNext();
+	}
+}
+
+LinkedList& LinkedList::operator = (const LinkedList& otherList)
+{
+	if (this == &otherList)
+		return *this;
+	else
+	{
+		Node* trav = head;
+		for (int i = 0; i < size; i++)
+		{
+			Node* temp = trav->getNext();
+			delete trav;
+			trav = temp;
+		}
+		size = otherList.size;
+		head = new Node(*otherList.head);
+		tail = new Node(*otherList.tail);
+		trav = head;
+		Node* travOther = otherList.head;
+		for (int i = 0; i < size - 1; i++)
+		{
+			travOther = travOther->getNext();
+			trav->setNext(new Node(*travOther));
+			trav = trav->getNext();
+		}
+
+	}
+}
+
+LinkedList::~LinkedList()
+{
+	Node* trav = head;
+	for (int i = 0; i < size; i++)
+	{
+		Node* temp = trav->getNext();
+		delete trav;
+		trav = temp;
+	}
+}
+
 Card* LinkedList::getAtIndex(int index)
 {
 	if (index < 0 || index > size)
@@ -121,7 +178,7 @@ bool LinkedList::contains(Card* data)
 	else
 	{
 		Node* trav = head;
-		for (int i = 1; i < size - 1; i++)
+		for (int i = 0; i < size; i++)
 		{
 
 			if (!data->compareTo(*(trav->getData())))
@@ -141,7 +198,7 @@ int LinkedList::search(Card* data)
 	else
 	{
 		Node* trav = head;
-		for (int i = 1; i < size - 1; i++)
+		for (int i = 0; i < size; i++)
 		{
 
 			if (!data->compareTo(*(trav->getData())))
@@ -242,3 +299,34 @@ Card* LinkedList::removeAtTail()
 	size--;
 	return temp;
 }
+
+Card* LinkedList::remove(Card* data)
+{
+	Card* temp = NULL;
+	if (!data->compareTo(*(head->getData())))
+		temp = removeAtHead();
+	else if (!data->compareTo(*(tail->getData())))
+		temp = removeAtTail();
+	else
+	{
+		Node* trav = head;
+		for (int i = 0; i < size; i++)
+		{
+
+			if (!data->compareTo(*(trav->getData())))
+			{
+				temp = removeAtIndex(i);
+				
+			}
+			trav = trav->getNext();
+		}
+	}
+	if (temp != NULL)
+		return temp;
+	else
+	{
+		cerr << "The card is not in the deck.\n";
+		return NULL;
+	}
+}
+

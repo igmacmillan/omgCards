@@ -21,20 +21,20 @@ private:
 
 public:
 	LinkedList();
-	//LinkedList(LinkedList& otherList);
+	LinkedList(LinkedList& otherList);
 	Card* getHead();
 	Card* getTail();
 	Card* getAtIndex(int);
 	int getSize();
 	bool insertAtIndex(Card* data, int index);
 	Card* removeAtIndex(int index);
-	//* remove(Card* data);
+	Card* remove(Card* data);
 	bool contains(Card* data);
 	int search(Card* data);
 	const Card& operator[] (int index);
 	friend ostream& operator << (ostream&, LinkedList&);
-	//LinkedList& operator = (const LinkedList& otherList);
-	//~LinkedList();
+	LinkedList& operator = (const LinkedList& otherList);
+	~LinkedList();
 
 };
 
