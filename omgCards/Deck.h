@@ -9,12 +9,16 @@ private:
 	int size;
 public:
 	Deck();
-	Deck(int cap);
 	int getSize();
 	void shuffle();
 	Card* deal();
-	void display();
+	void display() const;
 	string toString();
+
+	//Deck(const Deck& other);
+	//Deck& operator = (const Deck& other);
+	//~Deck();
+	friend ostream& operator << (ostream& output, const Deck& d);
 };
 
 

@@ -29,6 +29,7 @@ public:
 	int compareByValue(const Card& otherCard);
 	string toString();
 	void display();
+	friend ostream& operator << (ostream& output, const Card& c);
 };
 
 #endif

@@ -12,6 +12,7 @@ Card::Card(int r, int s)
 {
 	rank = r;
 	suit = s;
+	value = r + 1;
 }
 
 Card::Card(int r, int s, int v)
@@ -97,6 +98,10 @@ void Card::display()
 	cout << rankAsStr[rank] << " of " << suitAsStr[suit];
 }
 
-
+ostream& operator << (ostream& output, const Card& c)
+{
+	output << c.rankAsStr[c.rank] << " of " << c.suitAsStr[c.suit];
+	return output;
+}
 
 
