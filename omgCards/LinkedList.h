@@ -1,5 +1,5 @@
 #ifndef LINKEDLIST_H
-#define LINEDLIST_H
+#define LINKEDLIST_H
 
 #include "Card.h"
 #include "Node.h"
@@ -32,7 +32,7 @@ public:
 	bool contains(Card* data);
 	int search(Card* data);
 	const Card& operator[] (int index);
-	friend ostream& operator << (ostream&, LinkedList&);
+	friend ostream& operator << (ostream&, const LinkedList&);
 	LinkedList& operator = (const LinkedList& otherList);
 	~LinkedList();
 

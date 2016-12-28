@@ -12,7 +12,12 @@ Card::Card(int r, int s)
 {
 	rank = r;
 	suit = s;
-	value = r + 1;
+	if (0 == r)
+		value = 11;
+	else if (r > 8)
+		value = 10;
+	else
+		value = r + 1;
 }
 
 Card::Card(int r, int s, int v)

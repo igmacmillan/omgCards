@@ -94,9 +94,9 @@ Card* LinkedList::getAtIndex(int index)
 		return false;
 	}
 	if (index == 0)
-		getHead();
+		return getHead();
 	else if (index == size)
-		getTail();
+		return getTail();
 	else
 	{
 		Node* trav = head;
@@ -105,7 +105,7 @@ Card* LinkedList::getAtIndex(int index)
 		{
 			trav = trav->getNext();
 		}
-		trav->getData();
+		return trav->getData();
 	}
 }
 
@@ -236,7 +236,7 @@ const Card& LinkedList::operator[] (int index)
 	}
 
 }
-ostream& operator << (ostream& output, LinkedList& list)
+ostream& operator << (ostream& output, const LinkedList& list)
 {
 	Node* trav = list.head;
 	for (int i = 0; i < list.size; i++)

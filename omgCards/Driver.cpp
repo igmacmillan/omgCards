@@ -2,12 +2,19 @@
 #include "Stack.h"
 #include "Deck.h"
 #include "LinkedList.h"
+#include "Hand.h"
+#include "Player.h"
+#include "Game.h"
 
 #include<iostream>
 using namespace std;
 
 int main()
 {
+	Game game;
+	game.playGame();
+
+
 	/*
 	cout << "This displays the default card constructor:\n";
 	Card c;
@@ -39,7 +46,7 @@ int main()
 	cout << s;
 	*/
 
-	
+	/*
 	Deck d;
 	d.shuffle();
 	//cout << d;
@@ -56,8 +63,49 @@ int main()
 	//l.insertAtIndex(c, 10);
 	cout << l << endl;
 	
+	Hand h, h2;
+	Player one("ian");
+	one.addCard(l.removeAtIndex(0));
+	one.addCard(l.removeAtIndex(0));
+	Card* ace = new Card(0, 0);
+	one.addCard(ace);
+	cout << one;
+	one.showHand();
+	int total;
+	total = one.evaluate();
+	cout << "the total is: " << total;
+	
+	*/
+	
+	
+	
+
+
+	/*
+	h.insertLast(l.removeAtIndex(0));
+	cout << "This is my hand: " << h << endl << endl;
+	h2.insertLast(l.removeAtIndex(0));
+	cout << "reprinting the list\n" << l;
+	cout << endl << endl << "The other hand is: " << h2;
+	cout << endl << "Comparing the two hands";
+	int compare;
+	compare = h.compare(h2);
+	if (compare > 0)
+		cout << "The first hand wins";
+	else
+		cout << "The second had wins";
+	*/
+	
+
+
+
+
+
+	/*
 	LinkedList l2;
 	l2 = l;
+
+
 	l2.removeAtIndex(1);
 	cout << "New list missing index 1: \n" << l2;
 
@@ -65,7 +113,7 @@ int main()
 	
 	
 	
-	/*
+	
 	cout << "Below is the new list from the copy constructor\n";
 	LinkedList l2(l);
 	cout << l2;
