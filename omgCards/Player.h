@@ -25,6 +25,7 @@ public:
 
 	void showHand();
 	void setPoints(int bet);
+	int getPoints();
 	void reset();
 
 	friend ostream& operator<<(ostream&, const Player&); //display Player's info

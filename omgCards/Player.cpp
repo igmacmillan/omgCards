@@ -56,6 +56,11 @@ void Player::setPoints(int bet)
 	points = points + bet;
 }
 
+int Player::getPoints()
+{
+	return points;
+}
+
 void Player::reset()
 {
 	hand.remove();
